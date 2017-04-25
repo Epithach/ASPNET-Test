@@ -32,7 +32,13 @@ namespace AspTest.Controllers
             //return Content("Hello World !");
             //return HttpNotFound();
             //return new EmptyResult();
-            return RedirectToAction("Index", "Home", new { page = 1, sortBy = "name"});
+            //return RedirectToAction("Index", "Home", new { page = 1, sortBy = "name"});
+
+            ViewData["Movie"] = movie;
+            ViewBag.Movie = movie;
+
+            return View(movie);
+
         }
 
         public ActionResult Edit(int Id)
@@ -54,9 +60,25 @@ namespace AspTest.Controllers
             return Content(String.Format("pageIndex={0}&sortBy{1}", pageIndex, sortBy));
         }
 
-        public ActionResult ByReleaseDate(int year, int month)
-        {
-            return Content("Date : " + month + "/" + year);
-        }
+
+        /*
+         * Constraints List 
+         * 
+         * min
+         * max
+         * minlength
+         * maxlength
+         * int
+         * float
+         * guid
+         */
+
+            /*
+                [Route("movies/release/{year}/{month:regex(\\d{2}):range(1, 12)}")]
+                public ActionResult ByReleaseDate(int year, int month)
+                {
+                    return Content("Date : " + month + "/" + year);
+                }
+            */
     }
 }

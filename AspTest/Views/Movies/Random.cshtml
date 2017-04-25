@@ -1,8 +1,17 @@
-﻿@model AspTest.Models.Movie
+﻿@using AspTest.Models
+
+@model AspTest.Models.Movie
 @{
     ViewBag.Title = "Random";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Model.Name</h2>
+<h1>@Model.Name</h1>
 
+
+<h3>Conseil : Ne pas utiliser ViewData et ViewBag</h3>
+
+
+<p>@( ((Movie) ViewData["Movie"]).Name)</p>
+
+<p>@ViewBag.RandomMovie</p>
